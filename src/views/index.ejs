@@ -1,0 +1,13 @@
+<html>
+    <head></head>
+    <body>
+        <h1>
+            Welcome to <%=title%>
+        </h1>
+        <ul>
+            <%for(const b of bio) {%>
+                <li><%=b.first_name%> <%=b.last_name%></li>
+            <% } %>
+        </ul>
+    </body>
+</html>
