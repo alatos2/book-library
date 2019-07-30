@@ -4,6 +4,7 @@ const debug = require('debug')('app');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
 const path = require('path');
+const bookRoute = require('./Routes/bookRoute');
 
 const app = express();
 
@@ -19,6 +20,11 @@ app.set('view engine', 'ejs');
 app.get('/', (req, res) => {
   res.render('index', {
     title: 'Grace is all I need',
+    nav: [
+      { link: '/', title: 'Home' },
+      { link: '/about', title: 'About' }, 
+      { link: '/books', title: 'Books'},
+      { link: '/authors', title: 'Authors' }],
     bio: [
       {
         first_name: 'Alabi',
@@ -28,13 +34,12 @@ app.get('/', (req, res) => {
         first_name: 'Kayode',
         last_name: 'Martins',
       },
-      {
-        first_name: 'Kenny',
-        last_name: 'Red',
-      },
     ],
   });
 });
+
+app.use('/books', bookRoute);
+app.use('/single', bookRoute);
 
 dotenv.config();
 const { PORT } = process.env || 4000;

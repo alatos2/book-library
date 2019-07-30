@@ -1,9 +1,16 @@
 <html>
-    <head></head>
+    <head>
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+    </head>
     <body>
         <h1>
             Welcome to <%=title%>
         </h1>
+        <ul>
+            <%for(const n of nav) {%>
+                <li><a href='<%=n.link%>'><%=n.title%></a></li>
+            <% } %>
+        </ul>
         <ul>
             <%for(const b of bio) {%>
                 <li><%=b.first_name%> <%=b.last_name%></li>
