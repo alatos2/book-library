@@ -3,7 +3,15 @@ const express = require('express');
 const route = express.Router();
 
 route.get('/', (req, res) => {
-  res.send('Hello  all books');
+  res.render('books', {
+    title: 'Welcome to Book Library',
+    nav: [
+      { link: '/', title: 'Home' },
+      { link: '/about', title: 'About' },
+      { link: '/books', title: 'Books' },
+      { link: '/author', title: 'Author' },
+    ],
+  });
 });
 
 route.get('/single', (req, res) => {
